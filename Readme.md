@@ -21,3 +21,12 @@ Pada gambar di atas, terdapat 4 terminal yang dibuka. Terminal kiri atas digunak
 Untuk mengubah port web socket menjadi 8080, kita perlu memodifikasi file client.rs dan server.rs. Pada client.rs, kita perlu mengubah `ClientBuilder::from_uri(Uri::from_static("ws://127.0.0.1:2000"))` menjadi       `ClientBuilder::from_uri(Uri::from_static("ws://127.0.0.1:8080"))`. Lalu, pada server.rs, kita perlu mengubah `    let listener = TcpListener::bind("127.0.0.1:2000").await?;` menjadi `let listener = TcpListener::bind("127.0.0.1:8080").await?;`. Hal ini dilakukan karena keduanya perlu terhubung ke port yang sama. Dengan demikian, port keduanya perlu diubah menjadi 8080.
 
 </details>
+
+<details>
+  <summary>Experiment 2.3: Small changes, add IP and Port</summary>
+
+  ![image](https://github.com/bangjai123/Advprog10-Broadcast/assets/120235144/37017765-8835-435f-88f4-1c1d6be05b55)
+
+  Untuk menambahkan informasi sebagaimana diminta modul, saya mengubah baik file client.rs maupun server.rs. Pada client.rs, perubahan tersebut terletak pada `println!("Zaidan's Computer - From server: {}", text);` yang sebelumnya `println!("From server: {}", text);`. Lalu, pada server.rs, perubahan tersebut terletak pada `cast_tx.send(format!("{addr:?}"))?;` yang mula-mula adalah `bcast_tx.send(text.into()?;`. Perubahan tersebut dapat dilihat hasilnya pada output yang diprint, yaitu penambahan "Zaidan's Computer - From server:". 
+
+</details>
